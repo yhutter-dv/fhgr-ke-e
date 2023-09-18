@@ -8,3 +8,6 @@ source ./venv/bin/activate.sh
 pip install -r requirements.txt
 mdslides main.md --include media
 ```
+
+## Code
+The code examples can be found under the `code` directory.
