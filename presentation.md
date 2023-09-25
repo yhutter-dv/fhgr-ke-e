@@ -1,5 +1,5 @@
-[comment]: # (THEME = white)
-[comment]: # (CODE_THEME = base16/zenburn)
+[comment]: # (THEME = black)
+[comment]: # (CODE_THEME = monokai)
 [comment]: # (controls: true)
 [comment]: # (keyboard: true)
 [comment]: # (markdown: { smartypants: true })
@@ -20,18 +20,18 @@ Yannick Hutter | FHGR Chur |
 [comment]: # (!!!)
 
 ### Programmierung
-* Zu Beginn war das einfach `Programmieren`. Ein Programmierer schrieb ein Programm, welches mithilfe von Inputdaten (Parameter etc.) einen bestimmten Output (Ergebnis) erzeugte. So wurde für **jede Aufgabenstellung ein bestimmtes Programm** geschrieben.
+Zu Beginn war das einfach `Programmieren`. Ein Programmierer schrieb ein Programm, welches mithilfe von Inputdaten (Parameter etc.) einen bestimmten Output (Ergebnis) erzeugte. So wurde für **jede Aufgabenstellung ein bestimmtes Programm** geschrieben.
 
 [comment]: # (!!!)
 
 ### Machine Learning
-* Machine Learning ist der nächste Schritt. Hierzu werden die entsprechenden Parameter (Features) von einer Person extrahiert und anschliessend einem **Modell** zur Verfügung gestellt, welches den gewünschten Output aufgrund von **bestehenden Daten**  vorhersagt.
+Machine Learning ist der nächste Schritt. Hierzu werden die entsprechenden Parameter (Features) von einer Person extrahiert und anschliessend einem **Modell** zur Verfügung gestellt, welches den gewünschten Output aufgrund von **bestehenden Daten**  vorhersagt.
 
 
 [comment]: # (!!!)
 
 ### Deep Learning
-* Deep Learning ist die nächste Evolution. Features werden direkt in das Netz gegeben, dieses zieht automatisch die relevanten Features raus und produziert den gewünschten Output. Deshalb ist hier **keine Unterstützung des Menschen notwendig**.
+Deep Learning ist die nächste Evolution. Features werden direkt in das Netz gegeben, dieses zieht automatisch die relevanten Features raus und produziert den gewünschten Output. Deshalb ist hier **keine Unterstützung des Menschen notwendig**.
 
 [comment]: # (!!!)
 
@@ -58,8 +58,7 @@ Yannick Hutter | FHGR Chur |
 ### Syntax vs. Semantik
 * Syntax beschreibt die **Struktur der Daten** (XML, RDF)
 * Semantik beschreibt die **Bedeutung der Daten** (RDFS, OWL)
-
-Sind Voraussetzung für **Interoperabilität**, d.h. gemeinsame Syntax (Grammatik) und gemeinsames Verständnis (Ontologie)
+* Sind Voraussetzung für **Interoperabilität**, d.h. gemeinsame Syntax (Grammatik) und gemeinsames Verständnis (Ontologie)
 
 [comment]: # (!!!)
 
@@ -198,7 +197,7 @@ Sind Voraussetzung für **Interoperabilität**, d.h. gemeinsame Syntax (Grammati
 [comment]: # (!!!)
 
 ### Darstellung von Metadaten als RDF Graph
-![Lösung RDF Aufgabe 1](./media/solution_rdf_homework_01.png) <!-- .element: style="height: 20vh;" -->
+![Lösung RDF Aufgabe 1](./media/solution_rdf_homework_01.png) 
 
 [comment]: # (!!!)
 
@@ -234,7 +233,7 @@ Sind Voraussetzung für **Interoperabilität**, d.h. gemeinsame Syntax (Grammati
 [comment]: # (!!!)
 
 ### Anonyme Ressourcen als RDF Graph
-![Lösung RDF Aufgabe 2](./media/solution_rdf_homework_02.png) <!-- .element: style="height: 20vh;" -->
+![Lösung RDF Aufgabe 2](./media/solution_rdf_homework_02.png)
 
 [comment]: # (!!!)
 
