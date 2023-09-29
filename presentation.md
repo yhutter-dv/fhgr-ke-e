@@ -379,7 +379,40 @@ if __name__ == "__main__":
         print(f"Finished converting {input_file_path} to {output_file_path}")
 ```
 [comment]: # (!!!)
+
 ### Fragen Vertiefungsbeispiel GDP
 * Was passiert wenn bei einer Ressource Attribute vorhanden sind, bei einer andere aber nicht? Bswp. `populationTotal` bei [Turks and Caicos Island](https://dbpedia.org/page/Turks_and_Caicos_Islands) und [United States](https://dbpedia.org/page/United_States).
 * Wie findet man den `dpo` Namespace heraus von bspw. [populationTotal](https://dbpedia.org/ontology/populationTotal)?
+
 [comment]: # (!!!)
+
+### Fragen aus dem Unterricht
+
+[comment]: # (!!!)
+
+
+#### Was ist eine URL?
+* Zeichnet eine eindeutige Ressource im Web aus
+* Die URL hat bereits einen eigenen Namespace (Top Level Domain)
+* Unter diesem Namespace kann man frei weitere Ressourcen definieren ohne Namenskonflikte zu erhalten
+
+[comment]: # (!!!)
+
+#### Was für Nachteile hat XML?
+* Wenn keine vorgängige Struktur / Schematik definiert wurde, gibt es Kompatiblitätsprobleme.
+
+[comment]: # (!!!)
+
+#### Was für Nachteile hat XML?
+* Wenn keine vorgängige Struktur / Schematik definiert wurde, gibt es Kompatiblitätsprobleme.
+
+[comment]: # (!!!)
+
+#### Was für Serialisierungsformate gibt es?
+* Graphen Format (RDF)
+* Turtle
+* XML/RDF
+
+[comment]: # (!!!)
+
+
