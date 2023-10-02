@@ -1,5 +1,5 @@
 [comment]: # (THEME = black)
-[comment]: # (CODE_THEME = monokai)
+[comment]: # (CODE_THEME = srcery)
 [comment]: # (controls: true)
 [comment]: # (keyboard: true)
 [comment]: # (markdown: { smartypants: true })
@@ -282,7 +282,7 @@ Deep Learning ist die nächste Evolution. Features werden direkt in das Netz geg
 [comment]: # (!!!)
 
 ### Serialisierungsformate als RDF Graph
-![Lösung RDF Aufgabe 6.2](./media/solution_rdf_homework_06_2.png) 
+![Lösung RDF Aufgabe 6.2](./media/solution_rdf_homework_06_2.png) <!-- .element: style="height:40vh; max-width:80vw;" -->
 
 [comment]: # (!!!)
 
