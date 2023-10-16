@@ -13,6 +13,11 @@ First of all make sure that Docker is actually installed and the Service is runn
 sudo pacman -S docker
 sudo systemctl start docker.service
 ```
+Secondly if you want to run `docker` commands without the sudo prefix you need to add your user to the docker group (replace `$USER` with your user):
+```bash
+sudo usermod -aG docker $USER
+```
+Dont forget to logout and login again and restart the docker service.
 
 ### One Time Setup
 ```bash
