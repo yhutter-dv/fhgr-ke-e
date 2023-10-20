@@ -1,0 +1,18 @@
+
+:country			a				rdfs:Class.
+
+:EuropeanCountry	szbClassOf		Country.
+
+:rank				a				DataTypeProperty;
+					rdfs:domain		Country;
+					rdfs:range		xsd:int.
+
+:gdpPerCapita		a				DataProperty;
+					rdfs:domain		Country;
+					...
+
+:populationTotal	a				DataProperty;
+					rdfs:domain		Country;
+					...			
+
+Switzerand			a				EuropeanCountry .
