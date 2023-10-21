@@ -23,8 +23,8 @@ jobs:
           curl -sSL $url | tar -xz --directory=./mdbook
           echo `pwd`/mdbook >> $GITHUB_PATH
       - name: Build Book
-        working-directory: ./doc
         run: |
+          cd ./doc
           mdbook build
       - name: Setup Pages
         uses: actions/configure-pages@v2
