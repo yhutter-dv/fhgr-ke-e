@@ -1,6 +1,9 @@
 # Knowledge Engineering and Extraction
 Personal notes and excersises for the module Knowledge Engineering and Extraction @ FHGR Chur. Using [mdbook](https://rust-lang.github.io/mdBook/) in order to generate the documentation.
 
+## Documentation
+Documentation was generated with **mdbook**. I also automated the deployment process of the documentation so that it automatically gets pushed to the `gh-pages` branch using this awesome documentation [here](https://github.com/rust-lang/mdBook/wiki/Automated-Deployment%3A-GitHub-Actions).
+
 ## Setup with Docker 
 First of all make sure that Docker is actually installed and the Service is running:
 ```bash
