@@ -30,10 +30,9 @@ jobs:
         uses: actions/configure-pages@v2
       - name: Upload artifact
         uses: actions/upload-pages-artifact@v1
-        working-directory: ./doc
         with:
           # Upload entire repository
-          path: 'book'
+          path: './doc/book'
       - name: Deploy to GitHub Pages
         id: deployment
         uses: actions/deploy-pages@v1
