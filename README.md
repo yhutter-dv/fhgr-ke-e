@@ -4,6 +4,8 @@ Personal notes and excersises for the module Knowledge Engineering and Extractio
 ## Documentation
 Documentation was generated with **mdbook**. I also automated the deployment process of the documentation so that it automatically gets pushed to the `gh-pages` branch using this awesome documentation [here](https://github.com/rust-lang/mdBook/wiki/Automated-Deployment%3A-GitHub-Actions).
 
+The documentation is available [here](https://yhutter-dv.github.io/fhgr-ke-e/).
+
 ## Setup with Docker 
 First of all make sure that Docker is actually installed and the Service is running:
 ```bash
