@@ -1,7 +1,7 @@
 # Einführung und semantische Technologien
 
 ## Artificial Intelligence
-![AI Domänen](./images/ai_fields.png) 
+![Felder von AI](./images/ai_fields.png) 
 
 ### Programmierung
 Zu Beginn war das einfach `Programmieren`. Ein Programmierer schrieb ein Programm, welches mithilfe von Inputdaten (Parameter etc.) einen bestimmten Output (Ergebnis) erzeugte. So wurde für **jede Aufgabenstellung ein bestimmtes Programm** geschrieben.
