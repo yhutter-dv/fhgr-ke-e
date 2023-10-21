@@ -1,6 +1,6 @@
 # Generated folder by mdslides
 presentation/
-
+doc/book
 # Byte-compiled / optimized / DLL files
 __pycache__/
 *.py[cod]
