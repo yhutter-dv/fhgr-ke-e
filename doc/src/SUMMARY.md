@@ -2,5 +2,7 @@
 
 - [Einführung und semantische Technologien](./introduction_semantic_technologies.md)
 - [Ressource Description Framework](./rdf.md)
-- [FAQ](./faq.md)
 - [SPARQL](./sparql.md)
+- [Ontologien](./onotologies.md)
+- [Übungsbeispiele und Lösungen](./exercises.md)
+- [FAQ](./faq.md)

@@ -6,6 +6,18 @@ Documentation was generated with **mdbook**. I also automated the deployment pro
 
 The documentation is available [here](https://yhutter-dv.github.io/fhgr-ke-e/).
 
+### Run locally
+In order for the documentation to run locally you need to install `mdbook`:
+```bash
+cargo install mdbook
+```
+
+After that you can navigate to the `doc` folder and execute the mdbook open command:
+```bash
+cd doc
+mdbook open --serve
+```
+
 ## Setup with Docker 
 First of all make sure that Docker is actually installed and the Service is running:
 ```bash
