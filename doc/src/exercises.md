@@ -115,49 +115,50 @@ SELECT ?person ?name WHERE {
   ```sql
   PREFIX dc: <http://purl.org/dc/elements/1.1/>
   PREFIX foaf: <http://xmlns.com/foaf/0.1/>
-  prefix rdfs: <http://www.w3.org/2000/01/rdf-schema#>
-  prefix owl: <http://www.w3.org/2002/07/owl#>
 
-  SELECT ?publisher ?mail ?name ?age
-  WHERE {
-    <http://example.org/bobsBlog> dc:publisher ?publisher.
-    ?publisher foaf:mbox ?mail.
-    ?publisher foaf:name ?name.
-    OPTIONAL { ?publisher foaf:age ?age. }
+  SELECT ?mbox ?name ?age {
+    <http://example.org/bobsBlog> dc:publisher ?bob.
+    ?bob foaf:name ?name.
+    OPTIONAL {
+    ?bob foaf:age ?age
+    }
   }
-  LIMIT 25
   ```
 
   > Wie viele unterschiedliche E-Mail Adressen gibt es in der Datenbank?
   ```sql
-  PREFIX dc: <http://purl.org/dc/elements/1.1/>
   PREFIX foaf: <http://xmlns.com/foaf/0.1/>
-  prefix rdfs: <http://www.w3.org/2000/01/rdf-schema#>
-  prefix owl: <http://www.w3.org/2002/07/owl#>
 
-  SELECT DISTINCT ?mail
-  WHERE {
-    ?publisher foaf:mbox ?mail.
+  SELECT (count(?mbox) as ?anzahl) {
+    ?s foaf:mbox ?mbox
   }
-  LIMIT 25
   ```
   > Geben sie alle Personen aus, welche älter als 20 Jahre sind und bei denen die E-Mail Adresse eine URI ist
   ```sql
-  PREFIX dc: <http://purl.org/dc/elements/1.1/>
   PREFIX foaf: <http://xmlns.com/foaf/0.1/>
-  prefix rdfs: <http://www.w3.org/2000/01/rdf-schema#>
-  prefix owl: <http://www.w3.org/2002/07/owl#>
 
-  SELECT DISTINCT ?person ?mail
-  WHERE {
-    ?person foaf:name ?name.
-    ?person foaf:mbox ?mail.
-    ?person foaf:age ?age.
-    FILTER(?age >= 20 && isURI(?mail))
+  SELECT ?person ?mbox {
+    ?person foaf:age ?age;
+    foaf:mbox ?mbox.
+    FILTER(?age > 20 && isURI(?mbox))
   }
-  LIMIT 25
   ```
+
+  > Sortieren Sie das Ergebnis alphabetisch nach der Person (aufsteigend)
+
+  ```sql
+  PREFIX foaf: <http://xmlns.com/foaf/0.1/>
+
+  SELECT ?person ?mbox {
+    ?person foaf:age ?age;
+    foaf:mbox ?mbox.
+    FILTER(?age > 20 && isURI(?mbox))
+  }
+  ORDER BY ?person
+  ```
+  
 </details>
+
 
 ### Sonne, Mond und Sterne
 ![Aufgabenblatt 02 Sonne, Mond und Sterne Aufgabenstellung](./images/homework_02_planets.png)
@@ -168,75 +169,52 @@ SELECT ?person ?name WHERE {
   > Objekte die um die Sonne oder um einen Satelliten der Sonne kreisen
 
   ```sql
-  PREFIX dc: <http://purl.org/dc/elements/1.1/>
-  PREFIX foaf: <http://xmlns.com/foaf/0.1/>
   PREFIX ex: <http://example.org/>
-  prefix rdfs: <http://www.w3.org/2000/01/rdf-schema#>
-  prefix owl: <http://www.w3.org/2002/07/owl#>
 
-  SELECT ?objekt
-  WHERE {
-    ?s ex:satellit ?objekt.
+  SELECT ?obj ?sat {
+    ex:Sonne ex:satellit ?sat.
+    OPTIONAL {
+      ?sat ex:satellit ?obj.
+    }
   }
-  LIMIT 25
   ```
 
   > Alle Objekte welche ein Volumen von mehr als 2 x 10^10 Kubikkilometer besitzen und falls vorhanden der dazugehörige Satellit
 
   ```sql
-  PREFIX dc: <http://purl.org/dc/elements/1.1/>
-  PREFIX foaf: <http://xmlns.com/foaf/0.1/>
   PREFIX ex: <http://example.org/>
-  prefix rdfs: <http://www.w3.org/2000/01/rdf-schema#>
-  prefix owl: <http://www.w3.org/2002/07/owl#>
-  prefix ofn: <http://www.ontotext.com/sparql/functions/>
 
-  SELECT ?objekt ?objektvon
-  WHERE {
-    ?objekt ex:radius ?radius.
-    FILTER(?radius > 3*2*10/(4*3.14159265359))
-    ?objektvon ex:satellit ?objekt.
+  SELECT ?obj ?sat {
+    ?sat ex:radius ?radius.
+    OPTIONAL {
+      ?obj ex:satellit ?sat.
+    }
+    FILTER (4/3*3.14*?radius*?radius*?radius > 2E10)
   }
-  LIMIT 25
   ```
 
   > Objekte mit einem Satelliten, für den ein englischsprachiger Name gegeben ist, die ausser- dem Satellit eines Objektes von über 3000 (km) Durchmesser sind
 
   ```sql
-  PREFIX dc: <http://purl.org/dc/elements/1.1/>
-  PREFIX foaf: <http://xmlns.com/foaf/0.1/>
   PREFIX ex: <http://example.org/>
-  prefix rdfs: <http://www.w3.org/2000/01/rdf-schema#>
-  prefix owl: <http://www.w3.org/2002/07/owl#>
-  prefix ofn: <http://www.ontotext.com/sparql/functions/>
 
-  SELECT ?objekt ?satelit
-  WHERE {
-    ?objekt ex:satellit ?satelit.
-    ?satelit ex:name ?name.
-    ?objekt ex:radius ?radius.
-    FILTER(?radius *2 > 3000 &&
-    lang(?name)='en')
+  SELECT ?stern ?obj ?sat {
+    ?obj ex:satellit ?sat.
+    ?sat ex:name ?name.
+    ?stern ex:satellit ?obj.
+    FILTER (lang(?name) = "en")
   }
-  LIMIT 25
   ```
 
   > Objekte mit zwei oder mehr Satelliten (nehmen Sie an, dass unterschiedliche URIs hier unterschiedliche Objekte bezeichnen)
 
   ```sql
-  PREFIX dc: <http://purl.org/dc/elements/1.1/>
-  PREFIX foaf: <http://xmlns.com/foaf/0.1/>
   PREFIX ex: <http://example.org/>
-  prefix rdfs: <http://www.w3.org/2000/01/rdf-schema#>
-  prefix owl: <http://www.w3.org/2002/07/owl#>
-  prefix ofn: <http://www.ontotext.com/sparql/functions/>
 
-  SELECT ?object (COUNT(?satellite) AS ?satelliteCount)
-  WHERE {
-    ?object ex:satellit ?satellite .
+  SELECT ?obj ?sat1 ?sat2 {
+    ?obj ex:satellit ?sat1, ?sat2 .
+    FILTER(?sat1 != ?sat2)
   }
-  GROUP BY ?object
-  HAVING (COUNT (?satellite) >= 2)
   ```
 </details>
 
@@ -250,62 +228,52 @@ SELECT ?person ?name WHERE {
   > Geben Sie alle Statements des Café Datensatzes aus, um dessen Struktur und Vokabular zu ermitteln.
 
   ```sql
-  PREFIX rdfs: <http://www.w3.org/2000/01/rdf-schema#>
-  PREFIX owl: <http://www.w3.org/2002/07/owl#>
-  SELECT ?subject ?predicate ?object
+  SELECT ?s ?p ?o
   WHERE {
-    ?subject ?predicate ?object
+    ?s ?p ?o.
   }
   ```
 
-  > Ermitteln sie die Namen aller Caf´es und deren Rating.
+  > Ermitteln sie die Namen aller Cafés und deren Rating.
 
   ```sql
   PREFIX dc: <http://purl.org/dc/elements/1.1/>
-  PREFIX rdfs: <http://www.w3.org/2000/01/rdf-schema#>
-  PREFIX owl: <http://www.w3.org/2002/07/owl#>
-  PREFIX default: <http://inf.ed.ac.uk/examples#>
+  PREFIX ex: <http://inf.ed.ac.uk/examples#>
 
-  SELECT ?title ?rating
+  SELECT ?cafe ?name ?rating
   WHERE {
-    ?subject dc:title ?title.
-    ?subject default:rating ?rating.
-  }
-  LIMIT 25
+    ?cafe dc:title ?name.
+    ?cafe ex:rating ?rating.
+  } 
   ```
 
   > Geben Sie aus, welche Personen Café's lieben, die im "eastEnd" beheimatet sind.
 
   ```sql
-  PREFIX foaf: <http://xmlns.com/foaf/0.1/>
-  PREFIX rdfs: <http://www.w3.org/2000/01/rdf-schema#>
-  PREFIX owl: <http://www.w3.org/2002/07/owl#>
-  PREFIX default: <http://inf.ed.ac.uk/examples#>
+  PREFIX dc: <http://purl.org/dc/elements/1.1/>
+  PREFIX dbp: <http://dbpedia.org/property/>
+  PREFIX ex: <http://inf.ed.ac.uk/examples#>
 
-  SELECT ?person ?name
+  SELECT ?cafe ?name ?person
   WHERE {
-    ?subject <http://dbpedia.org/property/locatedIn> ?location.
-    FILTER (?location = default:eastEnd)
-    ?subject default:lovedBy ?person.
-    OPTIONAL {?person foaf:name ?name.}
+    ?cafe dbp:locatedIn ex:eastEnd.
+    ?cafe dc:title ?name.
+    ?cafe ex:lovedBy ?person.
   }
   ```
 
   > Geben Sie bei der vorhergehenden Aufgabe zusätzlich aus, welche Personen die ermittelten Café Liebhaber kennen.
 
   ```sql
-  PREFIX foaf: <http://xmlns.com/foaf/0.1/>
-  PREFIX rdfs: <http://www.w3.org/2000/01/rdf-schema#>
-  PREFIX owl: <http://www.w3.org/2002/07/owl#>
-  PREFIX default: <http://inf.ed.ac.uk/examples#>
+  PREFIX dbp: <http://dbpedia.org/property/>
+  PREFIX ex: <http://inf.ed.ac.uk/examples#>
 
-  SELECT ?person ?name ?friend
+  SELECT ?cafe ?name ?person ?knows
   WHERE {
-    ?subject <http://dbpedia.org/property/locatedIn> ?location.
-    FILTER (?location = default:eastEnd)
-    ?subject default:lovedBy ?person.
-    OPTIONAL {?person foaf:name ?name.}
-    OPTIONAL {?person foaf:knows ?friend.}
+    ?cafe dbp:locatedIn ex:eastEnd.
+    ?cafe <http://purl.org/dc/elements/1.1/title> ?name.
+    ?cafe ex:lovedBy ?person.
+    OPTIONAL {?person <http://xmlns.com/foaf/0.1/knows> ?knows}.
   }
   ```
 </details>
