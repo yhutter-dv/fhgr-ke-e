@@ -42,3 +42,11 @@ sudo docker run -p 3030:3030 -e ADMIN_PASSWORD=admin stain/jena-fuseki
 ## Python Code
 The code examples can be found under the `code` directory.
 
+Please make sure to also create a `Virtual Environment and install the required packages`:
+
+```bash
+cd code
+python -m venv ./venv
+source ./venv/bin/activate.sh
+pip install -r requirements.txt
+```
